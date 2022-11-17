@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "../controllers/features/authSlice";
-import ErrorIcon from "../assets/faIcons/errorMessageIcon";
+import { ErrorIcon, LockIcon, ProfileIcon } from "../assets/faIcons";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -10,6 +10,8 @@ export default function Login() {
     password: "",
   });
 
+  const [nameFocused, setNameFocused] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
   const [nameFieldValidation, setNameFieldValidation] = useState(false);
   const [passwordFieldValidation, setPasswordFieldValidation] = useState(false);
 
@@ -33,9 +35,16 @@ export default function Login() {
           </h1>
 
           {/* USERNAME INPUT */}
-          <label className="block text-light" htmlFor="username">
+          <label className="relative text-light" htmlFor="username">
             Username
+            <ProfileIcon
+              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 ${
+                nameFocused ? "scale-[.75]" : ""
+              } ease-in-out duration-300`}
+              fill={`${nameFocused ? "#00ADB5" : "#393E46"}`}
+            />
           </label>
+
           <input
             onFocus={() => {
               if (nameFieldValidation) {
@@ -46,12 +55,14 @@ export default function Login() {
               if (!loginForm.name) {
                 setNameFieldValidation(!nameFieldValidation);
               }
+              setNameFocused(false);
             }}
             id="username"
-            className="relative z-10 w-full p-2 mt-2 mb-2 rounded-sm text-darkGrey"
+            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-darkGrey"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, name: evt.target.value })
             }
+            onClick={() => setNameFocused(true)}
             value={loginForm.name}
             name="name"
             placeholder="Username"
@@ -70,9 +81,18 @@ export default function Login() {
           </p>
 
           {/* PASSWORD INPUT */}
-          <label className="text-light flex flex-col mt-1" htmlFor="password">
+          <label
+            className="relative text-light flex flex-col mt-1"
+            htmlFor="password">
             Password
+            <LockIcon
+              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 ${
+                passwordFocused ? "scale-[.75]" : ""
+              } ease-in-out duration-300`}
+              fill={`${passwordFocused ? "#00ADB5" : "#393E46"}`}
+            />
           </label>
+
           <input
             onFocus={() => {
               if (passwordFieldValidation) {
@@ -80,15 +100,17 @@ export default function Login() {
               }
             }}
             onBlur={(evt) => {
-              if (!loginForm.name) {
+              if (!loginForm.password) {
                 setPasswordFieldValidation(!passwordFieldValidation);
               }
+              setPasswordFocused(false);
             }}
             id="password"
-            className="relative z-10 w-full p-2 mt-2 mb-2 rounded-sm text-darkGrey"
+            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-darkGrey"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, password: evt.target.value })
             }
+            onClick={() => setPasswordFocused(true)}
             value={loginForm.password}
             name="password"
             placeholder="Password"
@@ -108,11 +130,12 @@ export default function Login() {
             password
           </p>
 
+          {/* FORM SUBMISSION BUTTON */}
           <button
             className={`w-full mt-2 px-6 py-2 rounded ${
               loginForm.name && loginForm.password
-                ? "bg-accent text-darkGrey"
-                : "bg-grey cursor-default"
+                ? "bg-accent text-white"
+                : "bg-grey cursor-default "
             }`}
             type="submit">
             Login
