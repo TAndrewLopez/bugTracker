@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 //CUSTOM COMPONENTS
 import { Login, Dashboard, BugsView } from "./pages";
-import { Sidebar } from "./components";
+import { Menubar, Sidebar } from "./components";
 
 const App = () => {
   const { loggedIn } = useSelector((state) => state.authReducer);
@@ -14,6 +14,7 @@ const App = () => {
         <Login />
       ) : (
         <>
+          <Menubar />
           <Sidebar />
           <Routes>
             <Route index element={<Dashboard />} />
