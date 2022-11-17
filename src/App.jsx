@@ -1,10 +1,15 @@
-import { Login } from "./views";
+import { useSelector } from "react-redux";
+
+//CUSTOM COMPONENTS
+import { Login, Sidebar } from "./views";
 
 const App = () => {
+  const { loggedIn } = useSelector((state) => state.authReducer);
   return (
-    <div className="absolute bg-loginBG bg-cover bg-center bg-no-repeat w-full h-full bg-black/[.5] bg-blend-multiply min-w-fit">
-      <Login />
-    </div>
+    <>
+      {!loggedIn ? <Login /> : <></>}
+      {!loggedIn ? <></> : <Sidebar />}
+    </>
   );
 };
 

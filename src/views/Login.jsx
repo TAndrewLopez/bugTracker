@@ -1,16 +1,17 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "../controllers/features/authSlice";
+import ErrorIcon from "../assets/faIcons/errorMessageIcon";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const nameRef = useRef({});
-  const passwordRef = useRef({});
-
   const [loginForm, setLoginForm] = useState({
     name: "",
     password: "",
   });
+
+  const [nameFieldValidation, setNameFieldValidation] = useState(false);
+  const [passwordFieldValidation, setPasswordFieldValidation] = useState(false);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -24,53 +25,100 @@ export default function Login() {
   };
 
   return (
-    <div className="h-full w-full flex justify-center items-center">
-      <form
-        className="bg-darkGrey w-fit border-2 border-light rounded flex flex-col px-6 sm:px-14 py-10 sm:py-12 gap-4"
-        onSubmit={handleSubmit}>
-        <h1 className="text-3xl sm:text-4xl text-light w-64 text-center">
-          Login
-        </h1>
+    <div className="w-full h-full absolute bg-loginBG bg-cover bg-center bg-no-repeat bg-black/[.5] bg-blend-multiply">
+      <div className="h-full w-full flex justify-center items-center">
+        <form onSubmit={handleSubmit}>
+          <h1 className="w-full text-4xl font-semibold text-light text-center mb-4">
+            Account Login
+          </h1>
 
-        <label className="text-light flex flex-col" htmlFor="username">
-          Username
+          {/* USERNAME INPUT */}
+          <label className="block text-light" htmlFor="username">
+            Username
+          </label>
           <input
+            onFocus={() => {
+              if (nameFieldValidation) {
+                setNameFieldValidation(!nameFieldValidation);
+              }
+            }}
+            onBlur={(evt) => {
+              if (!loginForm.name) {
+                setNameFieldValidation(!nameFieldValidation);
+              }
+            }}
             id="username"
-            className="rounded-sm p-2 text-darkGrey mt-2"
+            className="relative z-10 w-full p-2 mt-2 mb-2 rounded-sm text-darkGrey"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, name: evt.target.value })
             }
             value={loginForm.name}
             name="name"
-            // placeholder="Username"
+            placeholder="Username"
           />
-        </label>
+          <p
+            onClick={() => setNameFieldValidation(false)}
+            className={`relative z-5 top-[-35px] rounded-sm text-errorRed bg-white flex justify-center items-center gap-2 cursor-pointer
+            ${
+              nameFieldValidation
+                ? "translate-y-[35px] opacity-100"
+                : "opacity-0"
+            }
+            ease-in-out duration-500`}>
+            <ErrorIcon twClass="w-[5px]" fill="#cc0000" /> Please enter your
+            username
+          </p>
 
-        <label className="text-light flex flex-col" htmlFor="password">
-          Password
+          {/* PASSWORD INPUT */}
+          <label className="text-light flex flex-col mt-1" htmlFor="password">
+            Password
+          </label>
           <input
+            onFocus={() => {
+              if (passwordFieldValidation) {
+                setPasswordFieldValidation(!passwordFieldValidation);
+              }
+            }}
+            onBlur={(evt) => {
+              if (!loginForm.name) {
+                setPasswordFieldValidation(!passwordFieldValidation);
+              }
+            }}
             id="password"
-            className="rounded-sm p-2 text-darkGrey mt-2"
+            className="relative z-10 w-full p-2 mt-2 mb-2 rounded-sm text-darkGrey"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, password: evt.target.value })
             }
             value={loginForm.password}
             name="password"
-            // placeholder="Password"
+            placeholder="Password"
             type="password"
           />
-        </label>
 
-        <button
-          className={`mt-2 p-2 rounded ${
-            loginForm.name && loginForm.password
-              ? "bg-accent text-darkGrey"
-              : "bg-grey cursor-default"
-          }`}
-          type="submit">
-          Login
-        </button>
-      </form>
+          <p
+            onClick={() => setPasswordFieldValidation(false)}
+            className={`relative z-5 top-[-35px] rounded-sm text-errorRed bg-white flex justify-center items-center gap-2 cursor-pointer
+            ${
+              passwordFieldValidation
+                ? "translate-y-[35px] opacity-100"
+                : "opacity-0"
+            }
+            ease-in-out duration-500`}>
+            <ErrorIcon twClass="w-[5px]" fill="#cc0000" /> Please enter your
+            password
+          </p>
+
+          <button
+            className={`w-full mt-2 px-6 py-2 rounded ${
+              loginForm.name && loginForm.password
+                ? "bg-accent text-darkGrey"
+                : "bg-grey cursor-default"
+            }`}
+            type="submit">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
