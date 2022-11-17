@@ -1,4 +1,4 @@
-export default function () {
+export default function (bug) {
   if (bug != undefined) {
     this._id = bug._id;
     this.name = bug.name;

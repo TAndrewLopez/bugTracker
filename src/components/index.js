@@ -1,2 +1,2 @@
-export { default as Login } from "./Login";
+export { default as BugCard } from "./BugCard";
 export { default as Sidebar } from "./Sidebar";

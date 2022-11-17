@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signIn } from "../controllers/features/authSlice";
+import { signIn } from "../features/authSlice";
 import { ErrorIcon, LockIcon, ProfileIcon } from "../assets/faIcons";
 
 export default function Login() {
@@ -47,6 +47,7 @@ export default function Login() {
 
           <input
             onFocus={() => {
+              setNameFocused(true);
               if (nameFieldValidation) {
                 setNameFieldValidation(!nameFieldValidation);
               }
@@ -54,8 +55,8 @@ export default function Login() {
             onBlur={(evt) => {
               if (!loginForm.name) {
                 setNameFieldValidation(!nameFieldValidation);
+                setNameFocused(false);
               }
-              setNameFocused(false);
             }}
             id="username"
             className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-darkGrey"
@@ -95,6 +96,7 @@ export default function Login() {
 
           <input
             onFocus={() => {
+              setPasswordFocused(true);
               if (passwordFieldValidation) {
                 setPasswordFieldValidation(!passwordFieldValidation);
               }
@@ -102,8 +104,8 @@ export default function Login() {
             onBlur={(evt) => {
               if (!loginForm.password) {
                 setPasswordFieldValidation(!passwordFieldValidation);
+                setPasswordFocused(false);
               }
-              setPasswordFocused(false);
             }}
             id="password"
             className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-darkGrey"

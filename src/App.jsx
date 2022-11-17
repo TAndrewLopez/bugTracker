@@ -1,18 +1,24 @@
 import { useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
 //CUSTOM COMPONENTS
-import { Login, Sidebar } from "./views";
+import { Login, Dashboard, BugsView } from "./pages";
+import { Sidebar } from "./components";
 
 const App = () => {
   const { loggedIn } = useSelector((state) => state.authReducer);
+
   return (
     <>
       {!loggedIn ? (
         <Login />
       ) : (
         <>
-          {" "}
           <Sidebar />
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="/bugs" element={<BugsView />} />
+          </Routes>
         </>
       )}
     </>

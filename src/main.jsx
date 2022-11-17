@@ -8,15 +8,17 @@ import { configureStore } from "@reduxjs/toolkit";
 import { BrowserRouter as Router } from "react-router-dom";
 
 //REDUCERS
-import authReducer from "./controllers/features/authSlice";
-import bugReducer from "./controllers/features/bugSlice";
-import userReducer from "./controllers/features/userSlice";
+import authReducer from "./features/authSlice";
+import bugReducer from "./features/bugSlice";
+import userReducer from "./features/userSlice";
+import viewReducer from "./features/viewSlice";
 
 const store = configureStore({
   reducer: {
     authReducer,
     bugReducer,
     userReducer,
+    viewReducer,
   },
 });
 

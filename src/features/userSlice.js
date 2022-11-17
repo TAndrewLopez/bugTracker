@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const slice = createSlice({
   name: "user",
-  initialState: [{}],
+  initialState: [],
   reducers: {
     getUsers(state) {
       state.push({ name: "Ryan Beasley" });
