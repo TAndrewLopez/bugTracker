@@ -138,7 +138,7 @@ export default function Login() {
                 : "bg-grey cursor-default "
             }`}
             type="submit">
-            Login
+            Sign In
           </button>
         </form>
       </div>

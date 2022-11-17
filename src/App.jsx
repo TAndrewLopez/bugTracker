@@ -7,8 +7,14 @@ const App = () => {
   const { loggedIn } = useSelector((state) => state.authReducer);
   return (
     <>
-      {!loggedIn ? <Login /> : <></>}
-      {!loggedIn ? <></> : <Sidebar />}
+      {!loggedIn ? (
+        <Login />
+      ) : (
+        <>
+          {" "}
+          <Sidebar />
+        </>
+      )}
     </>
   );
 };
