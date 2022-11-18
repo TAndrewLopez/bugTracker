@@ -3,16 +3,17 @@ import { bugPriorityLevel, bugBorderColor } from "../controllers/bugController";
 const BugCard = ({ data }) => {
   const { name, priority, version } = data;
 
-  const clicked = () => {
-    props.clicked(props.name);
+  const clicked = (e) => {
+    // props.clicked(props.name);
+    console.log("clicked on bug");
   };
 
   return (
     <div
-      className={`h-48 shadow-3xl rounded text-center m-5 p-8 hover:scale-105 transition ease-in-out duration-300 text-darkGrey flex flex-col justify-between ${bugBorderColor(
+      className={`h-48 shadow-3xl rounded text-center m-5 p-8 hover:scale-105 transition ease-in-out duration-300 text-darkGrey flex flex-col justify-between cursor-pointer ${bugBorderColor(
         priority
       )}`}
-      onClick={() => null}>
+      onClick={clicked}>
       <h2 className="text-xl font-semibold">{name}</h2>
       <h4 className="text-grey">{`Priority: ${bugPriorityLevel(priority)}`}</h4>
       <h5>{`Application Version: ${version}`}</h5>
@@ -21,6 +22,3 @@ const BugCard = ({ data }) => {
 };
 
 export default BugCard;
-
-// min-w-[275px] min-h-[200px]
-//"border-t-4 border-t-signalGreen"

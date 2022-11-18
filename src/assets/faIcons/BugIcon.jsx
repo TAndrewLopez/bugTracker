@@ -1,6 +1,7 @@
-const BugIcon = ({ twClass }) => {
+const BugIcon = ({ twClass, event }) => {
   return (
     <svg
+      onClick={event}
       className={twClass}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512">

@@ -11,3 +11,20 @@ export default function (bug) {
     this.time = bug.time;
   }
 }
+
+/*
+SECTION A
+  ID
+  STATUS - OPEN/SOLVED/NEW/NEEDS RESPONSE/FEATURE REQUEST
+  PIN/STAR/MORE OPTIONS
+
+SECTION B
+  TITLE / TIME ELAPSED 
+  MORE DETAILS
+  ASSIGNED TO
+  RAISED BY
+  PRIORITY
+  CATEGORY
+  OVERDUE BY
+
+*/

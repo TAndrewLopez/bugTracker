@@ -15,11 +15,11 @@ const App = () => {
       ) : (
         <>
           <Menubar />
-          {/* <Sidebar />
+          <Sidebar />
           <Routes>
             <Route index element={<Dashboard />} />
             <Route path="/bugs" element={<BugsView />} />
-          </Routes> */}
+          </Routes>
         </>
       )}
     </>

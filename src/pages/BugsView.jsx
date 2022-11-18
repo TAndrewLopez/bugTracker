@@ -14,9 +14,8 @@ const BugsView = () => {
 
   return (
     <div
-      className={`flex flex-wrap flex-col md:flex-row justify-center ${
-        sidebarOpen ? "md:ml-96" : ""
-      }`}>
+      className={`absolute z-[-2] flex flex-wrap flex-col md:flex-row justify-center ease-in-out duration-300 p-4
+  ${sidebarOpen ? "md:ml-96" : ""}`}>
       {bugs.map((bug) => {
         return <BugCard key={bug._id} data={bug} />;
       })}
@@ -25,3 +24,10 @@ const BugsView = () => {
 };
 
 export default BugsView;
+
+/*
+  <div
+      className={`absolute flex flex-wrap flex-col md:flex-row justify-center ease-in-out duration-300 ${
+        sidebarOpen ? "md:ml-96" : ""
+      }`}>
+*/

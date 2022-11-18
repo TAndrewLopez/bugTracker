@@ -38,8 +38,8 @@ export default function Login() {
           <label className="relative text-light" htmlFor="username">
             Username
             <ProfileIcon
-              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 
-              ${nameFocused ? "scale-[.75]" : ""} ease-in-out duration-300 
+              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 ease-in-out duration-300 
+              ${nameFocused ? "scale-[.75]" : ""} 
               ${nameFocused ? "fill-accent" : "fill-blueGrey"}`}
             />
           </label>
@@ -58,7 +58,7 @@ export default function Login() {
               }
             }}
             id="username"
-            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-blueGrey"
+            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-blueGrey outline-none"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, name: evt.target.value })
             }
@@ -106,7 +106,7 @@ export default function Login() {
               }
             }}
             id="password"
-            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-blueGrey"
+            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-blueGrey outline-none"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, password: evt.target.value })
             }

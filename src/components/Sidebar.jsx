@@ -5,32 +5,35 @@ import { signOut } from "../features/authSlice";
 export default function () {
   const dispatch = useDispatch();
   const { admin } = useSelector((state) => state.authReducer);
+  const { sidebarOpen } = useSelector((state) => state.viewReducer);
+
+  const navLinks = [
+    { path: "/", text: "Dashboard" },
+    { path: "/bugs", text: "View Bugs" },
+  ];
 
   return (
-    <div className="w-full md:w-96 h-full fixed text-center text-light bg-blueGrey py-8 flex flex-col">
-      <h1 className="text-4xl font-bold mb-10">
-        <Link className="p-1">Bug-Tracker </Link>
-      </h1>
-      <ul className="flex-1">
-        <li className="text-2xl hover:bg-accent py-2 transition-all ease-in-out duration-300">
-          <Link to={"/"} className="p-1">
-            Dashboard
+    <div
+      className={`fixed top-0 z-[-1] h-full w-full md:w-96 pt-20 pb-4 text-xl flex flex-col justify-between text-light bg-blueGrey ease-in-out duration-300 
+      ${sidebarOpen ? "translate-x-0" : "translate-x-[-100%]"}`}>
+      <ul className="flex flex-col py-2">
+        {navLinks.map((item, i) => (
+          <Link
+            key={item.text + i}
+            to={item.path}
+            className="pl-4 py-2 hover:bg-accent transition-all ease-in-out duration-300">
+            {item.text}
           </Link>
-        </li>
-        <li className="text-2xl hover:bg-accent py-2 transition-all ease-in-out duration-300">
-          <Link to={"/bugs"} className="p-1">
-            View Bugs
-          </Link>
-        </li>
+        ))}
         {admin && (
-          <li className="text-2xl hover:bg-accent py-2 transition-all ease-in-out duration-300">
-            <Link className="p-1">Create Bugs</Link>
-          </li>
+          <Link className="pl-4 py-2 hover:bg-accent transition-all ease-in-out duration-300">
+            Create Bugs
+          </Link>
         )}
       </ul>
       <button
         onClick={() => dispatch(signOut())}
-        className={`mt-2 rounded bg-blueGrey hover:bg-accent px-6 py-2 transition-all ease-in-out duration-300`}>
+        className={`bg-blueGrey hover:bg-accent px-6 py-2 transition-all ease-in-out duration-300`}>
         Sign Out
       </button>
     </div>
