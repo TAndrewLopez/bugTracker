@@ -7,7 +7,7 @@ export default function () {
   const { admin } = useSelector((state) => state.authReducer);
 
   return (
-    <div className="w-full md:w-96 h-full fixed text-center text-light bg-grey py-8 flex flex-col">
+    <div className="w-full md:w-96 h-full fixed text-center text-light bg-blueGrey py-8 flex flex-col">
       <h1 className="text-4xl font-bold mb-10">
         <Link className="p-1">Bug-Tracker </Link>
       </h1>
@@ -30,7 +30,7 @@ export default function () {
       </ul>
       <button
         onClick={() => dispatch(signOut())}
-        className={`mt-2 rounded bg-grey hover:bg-accent px-6 py-2 transition-all ease-in-out duration-300`}>
+        className={`mt-2 rounded bg-blueGrey hover:bg-accent px-6 py-2 transition-all ease-in-out duration-300`}>
         Sign Out
       </button>
     </div>

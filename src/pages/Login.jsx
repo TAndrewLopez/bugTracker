@@ -38,10 +38,9 @@ export default function Login() {
           <label className="relative text-light" htmlFor="username">
             Username
             <ProfileIcon
-              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 ${
-                nameFocused ? "scale-[.75]" : ""
-              } ease-in-out duration-300`}
-              fill={`${nameFocused ? "#00ADB5" : "#393E46"}`}
+              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 
+              ${nameFocused ? "scale-[.75]" : ""} ease-in-out duration-300 
+              ${nameFocused ? "fill-accent" : "fill-blueGrey"}`}
             />
           </label>
 
@@ -59,7 +58,7 @@ export default function Login() {
               }
             }}
             id="username"
-            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-darkGrey"
+            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-blueGrey"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, name: evt.target.value })
             }
@@ -77,7 +76,7 @@ export default function Login() {
                 : "opacity-0"
             }
             ease-in-out duration-500`}>
-            <ErrorIcon twClass="w-[5px]" fill="#cc0000" /> Please enter your
+            <ErrorIcon twClass="w-[5px] fill-errorRed" /> Please enter your
             username
           </p>
 
@@ -87,10 +86,9 @@ export default function Login() {
             htmlFor="password">
             Password
             <LockIcon
-              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 ${
-                passwordFocused ? "scale-[.75]" : ""
-              } ease-in-out duration-300`}
-              fill={`${passwordFocused ? "#00ADB5" : "#393E46"}`}
+              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 
+              ${passwordFocused ? "scale-[.75]" : ""} ease-in-out duration-300
+              ${passwordFocused ? "fill-accent" : "fill-blueGrey"}`}
             />
           </label>
 
@@ -108,7 +106,7 @@ export default function Login() {
               }
             }}
             id="password"
-            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-darkGrey"
+            className="relative z-10 w-full pl-8 p-2 mt-2 mb-2 rounded-sm text-blueGrey"
             onChange={(evt) =>
               setLoginForm({ ...loginForm, password: evt.target.value })
             }
@@ -128,7 +126,7 @@ export default function Login() {
                 : "opacity-0"
             }
             ease-in-out duration-500`}>
-            <ErrorIcon twClass="w-[5px]" fill="#cc0000" /> Please enter your
+            <ErrorIcon twClass="w-[5px] fill-errorRed" /> Please enter your
             password
           </p>
 
@@ -137,7 +135,7 @@ export default function Login() {
             className={`w-full mt-2 px-6 py-2 rounded ${
               loginForm.name && loginForm.password
                 ? "bg-accent text-white"
-                : "bg-grey cursor-default "
+                : "bg-blueGrey cursor-default "
             }`}
             type="submit">
             Sign In

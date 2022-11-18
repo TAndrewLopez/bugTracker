@@ -6,14 +6,15 @@ module.exports = {
       colors: {
         light: "#EEEEEE",
         accent: "#00ADB5",
-        grey: "#393E46",
-        darkGrey: "#222831",
+        blueGrey: "#393E46",
+        darkBlueGrey: "#222831",
         errorRed: "#cc0000",
         cautionOrange: "#ff6700",
         signalGreen: "#32cd32",
       },
       backgroundImage: {
         loginBG: `url(./src/assets/images/loginBG1.jpg)`,
+        appLogo: `url(./src/assets/images/appLogo.png)`,
       },
       fontFamily: {
         sans: "Poppins",
