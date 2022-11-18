@@ -4,7 +4,6 @@ const BugCard = ({ data }) => {
   const { name, priority, version } = data;
 
   const clicked = (e) => {
-    // props.clicked(props.name);
     console.log("clicked on bug");
   };
 

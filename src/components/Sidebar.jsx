@@ -14,19 +14,19 @@ export default function () {
 
   return (
     <div
-      className={`fixed top-0 z-[-1] h-full w-full md:w-96 pt-20 pb-4 text-xl flex flex-col justify-between text-light bg-blueGrey ease-in-out duration-300 
+      className={`fixed top-0 z-[-1] h-full w-full md:w-80 pt-20 pb-4 text-xl flex flex-col justify-between text-light bg-blueGrey ease-in-out duration-300 
       ${sidebarOpen ? "translate-x-0" : "translate-x-[-100%]"}`}>
       <ul className="flex flex-col py-2">
         {navLinks.map((item, i) => (
           <Link
             key={item.text + i}
             to={item.path}
-            className="pl-4 py-2 hover:bg-accent transition-all ease-in-out duration-300">
+            className="pl-8 py-2 hover:bg-accent transition-all ease-in-out duration-300">
             {item.text}
           </Link>
         ))}
         {admin && (
-          <Link className="pl-4 py-2 hover:bg-accent transition-all ease-in-out duration-300">
+          <Link className="pl-8 py-2 hover:bg-accent transition-all ease-in-out duration-300">
             Create Bugs
           </Link>
         )}

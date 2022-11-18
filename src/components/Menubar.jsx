@@ -33,7 +33,8 @@ const Menubar = () => {
         className="hidden md:relative md:flex flex-1 max-w-[500px]"
         onSubmit={(evt) => {
           evt.preventDefault();
-          console.log("submitted");
+          console.log(evt.target[0].value);
+          evt.target.reset();
         }}>
         <div className="flex items-center justify-center px-4 bg-blueGrey">
           <MagnifyingGlassIcon twClass="w-4 fill-light" />
@@ -44,7 +45,7 @@ const Menubar = () => {
           placeholder="Search Tickets and Contacts"
         />
         <div className="flex items-center justify-center px-4 ml-2 bg-blueGrey group hover:bg-light ease-in-out duration-300 cursor-pointer">
-          <PlusIcon twClass="w-4 fill-light ease-in-out duration-300 group-hover:fill-accent" />
+          <PlusIcon twClass="w-4 fill-light ease-in-out duration-300 group-hover:fill-darkBlueGrey" />
         </div>
       </form>
 

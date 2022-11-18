@@ -26,6 +26,9 @@ export const bugBorderColor = (num) => {
   }
 };
 
+//TEMP DATA RETRIEVER
+//TODO: REPLACE WHEN DATABASE IS SETUP
+
 export const retrieveBugs = () => {
   let data = [];
   data.push(
