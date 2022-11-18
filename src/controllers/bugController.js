@@ -53,7 +53,7 @@ export const retrieveBugs = () => {
       steps: "Call retrieveBugs()",
       version: "v1.0",
       assigned: "Drew Dobson",
-      creator: "Drew Dobson",
+      creator: "Mary Jane",
       priority: 1,
       time: "11:37",
     })

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "../features/authSlice";
-import { ErrorIcon, LockIcon, ProfileIcon } from "../assets/faIcons";
+import {
+  ErrorIcon,
+  LockIcon,
+  ProfileIcon,
+  UsersIcon,
+  AdminIcon,
+} from "../assets/faIcons";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -10,10 +16,15 @@ export default function Login() {
     password: "",
   });
 
+  //FORM STATE STATE
   const [nameFocused, setNameFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [nameFieldValidation, setNameFieldValidation] = useState(false);
   const [passwordFieldValidation, setPasswordFieldValidation] = useState(false);
+
+  //LOGIN ICON STATE
+  const [adminHover, setAdminHover] = useState(false);
+  const [employeeHover, setEmployeeHover] = useState(false);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -27,7 +38,7 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full h-full absolute bg-loginBG bg-cover bg-center bg-no-repeat bg-black/[.5] bg-blend-multiply">
+    <div className="w-full h-full absolute bg-loginBG bg-cover bg-center bg-no-repeat bg-black/[.5] bg-blend-multiply flex">
       <div className="h-full w-full flex justify-center items-center">
         <form onSubmit={handleSubmit}>
           <h1 className="w-full text-4xl font-semibold text-light text-center mb-4">
@@ -38,7 +49,7 @@ export default function Login() {
           <label className="relative text-light" htmlFor="username">
             Username
             <ProfileIcon
-              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 ease-in-out duration-300 
+              twClass={`absolute w-5 top-[40px] left-[5px] z-20 ease-in-out duration-300 
               ${nameFocused ? "scale-[.75]" : ""} 
               ${nameFocused ? "fill-accent" : "fill-blueGrey"}`}
             />
@@ -86,7 +97,7 @@ export default function Login() {
             htmlFor="password">
             Password
             <LockIcon
-              twClass={`absolute w-[20px] top-[40px] left-[5px] z-20 
+              twClass={`absolute w-5 top-[40px] left-[5px] z-20 
               ${passwordFocused ? "scale-[.75]" : ""} ease-in-out duration-300
               ${passwordFocused ? "fill-accent" : "fill-blueGrey"}`}
             />
@@ -142,6 +153,64 @@ export default function Login() {
           </button>
         </form>
       </div>
+
+      {/* DEMO LOGIN BUTTON */}
+      <div className="w-full fixed bottom-3 flex justify-center gap-24">
+        <div
+          onMouseEnter={() => {
+            if (!adminHover) setAdminHover(true);
+          }}
+          onMouseLeave={() => {
+            if (adminHover) {
+              setTimeout(() => {
+                setAdminHover(false);
+              }, 200);
+            }
+          }}
+          className="bg-light hover:bg-darkBlueGrey cursor-pointer rounded-full flex flex-col justify-center items-center p-4 relative ease-in-out duration-500">
+          <span
+            className={`absolute z-[-1] bottom-8 min-w-max text-light bg-darkBlueGrey ease-in-out duration-500 px-2 py-1 pointer-events-none rounded-sm
+            ${adminHover ? "translate-y-[-35px] opacity-100" : "opacity-0"} `}>
+            Admin Sign-in
+          </span>
+          <AdminIcon
+            twClass={`w-6 ${adminHover ? "fill-light" : "fill-accent"}`}
+          />
+        </div>
+
+        <div
+          onMouseEnter={() => {
+            if (!employeeHover) setEmployeeHover(true);
+          }}
+          onMouseLeave={() => {
+            if (employeeHover) {
+              setTimeout(() => {
+                setEmployeeHover(false);
+              }, 200);
+            }
+          }}
+          className="bg-light hover:bg-darkBlueGrey cursor-pointer rounded-full flex flex-col justify-center items-center p-4 relative ease-in-out duration-500">
+          <span
+            className={`absolute z-[-1] bottom-8 min-w-max text-light bg-darkBlueGrey ease-in-out duration-500 px-2 py-1 pointer-events-none rounded-sm
+            ${
+              employeeHover ? "translate-y-[-35px] opacity-100" : "opacity-0"
+            } `}>
+            Employee Sign-in
+          </span>
+          <UsersIcon
+            twClass={`w-6 ${employeeHover ? "fill-light" : "fill-accent"}`}
+          />
+        </div>
+      </div>
     </div>
   );
 }
+
+/*
+        <div className="bg-light rounded-full flex flex-col justify-center items-center p-4 relative">
+          <span className="absolute z-[-1] bottom-8 min-w-max text-light bg-darkBlueGrey">
+            Employee Sign-in
+          </span>
+          <UsersIcon twClass={"w-6 fill-accent"} />
+        </div>
+ */
